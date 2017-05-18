@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516144808) do
+ActiveRecord::Schema.define(version: 20170518153915) do
+
+  create_table "post_status_transitions", force: :cascade do |t|
+    t.integer "post_id"
+    t.string "namespace"
+    t.string "event"
+    t.string "from"
+    t.string "to"
+    t.datetime "created_at"
+    t.string "description"
+    t.string "name"
+    t.string "another_description"
+    t.index ["post_id"], name: "index_post_status_transitions_on_post_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "name"

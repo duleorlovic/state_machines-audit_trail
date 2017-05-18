@@ -16,6 +16,19 @@
     <%= form.text_field :name, id: :post_name %>
   </div>
 
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <!--
+  <div class="field">
+    <%= form.label :status_event %>
+    <%= form.select :status_event, post.status_events %>
+  </div>
+  -->
+
   <div class="actions">
     <%= form.submit %>
   </div>

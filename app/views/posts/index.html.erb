@@ -16,14 +16,22 @@
       <tr>
         <td><%= post.name %></td>
         <td><%= post.status %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td>
           <% post.status_events.each do |event| %>
-            <%= event %>
+            <%= link_to event, action_post_path(post, event: event), method: :post %>
           <% end %>
-        </td>
+          <%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <ul>
+          <% post.post_status_transitions.each do |t| %>
+            <li>
+              <%= t.slice :name, :description, :from, :to, :another_description %>
+            </li>
+          <% end %>
+          </ul>
+        </td>
       </tr>
     <% end %>
   </tbody>
